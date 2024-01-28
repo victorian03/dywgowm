@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you wanna go out with me?</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+            background-color: #fdd7e4; /* Roz pastel */
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            background-color: #e57393; /* Roz mai închis */
+            color: #fff; /* Text alb */
+            border: none;
+            margin: 5px;
+        }
+        #yesButton {
+            background-color: #ff80ab; /* Roz deschis pentru Yes */
+        }
+        #resultMessage {
+            display: none;
+            font-size: 24px;
+            margin-top: 20px;
+            color: #e57393; /* Roz mai închis */
+        }
+        #betweenImage {
+            width: 200px; /* Ajustează lățimea imaginii între întrebare și butoane */
+        }
+        #bottomImage {
+            visibility: hidden; /* Inițial ascuns */
+            width: 300px; /* Ajustează lățimea imaginii sub răspuns */
+        }
+        #resultImage {
+            visibility: hidden; /* Inițial ascuns */
+            width: 300px; /* Ajustează lățimea imaginii sub răspuns */
+            margin-top: 20px;
+        }
+        #buttonContainer {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="questionAndButtons">
+        <h1>Do you wanna go out with me?</h1>
+        
+        <!-- Adaugare poza între întrebare și butoane -->
+        <img id="betweenImage" src="https://i.pinimg.com/564x/09/41/83/0941838dc3024d2e5cc8e9139cbbecca.jpg" alt="Between Image">
+
+        <div id="buttonContainer">
+            <button id="yesButton" onclick="showResult('Right answer &lt;3')">Yes</button>
+            <button id="noButton" onclick="moveNoButton()">No</button>
+        </div>
+    </div>
+
+    <div id="resultMessage">Right answer &lt;3
+        <!-- Adaugare poza sub răspuns -->
+        <img id="bottomImage" src="https://i.pinimg.com/564x/c6/d3/fc/c6d3fc1b1622bc1da6540927b1f13953.jpg" alt="Bottom Image">
+        <img id="resultImage" src="https://i.pinimg.com/564x/c6/d3/fc/c6d3fc1b1622bc1da6540927b1f13953.jpg" alt="Result Image">
+    </div>
+
+    <script>
+        function showResult(message) {
+            document.getElementById("resultMessage").innerText = message;
+            document.getElementById("resultMessage").style.display = "block";
+            
+            // Ascunde întrebarea și butoanele
+            document.getElementById("questionAndButtons").style.display = "none";
+
+            // Afișează poza la pagina cu răspunsul
+            document.getElementById("bottomImage").style.visibility = "visible";
+            document.getElementById("resultImage").style.visibility = "visible";
+        }
+
+        function moveNoButton() {
+            var button = document.getElementById("noButton");
+            var newPositionX = Math.random() * window.innerWidth;
+            var newPositionY = Math.random() * window.innerHeight;
+            button.style.left = newPositionX + "px";
+            button.style.top = newPositionY + "px";
+        }
+    </script>
+</body>
+</html>
